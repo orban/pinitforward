@@ -183,7 +183,9 @@ export default {
   methods: {
     async getIpfsNodeInfo() {
       // check for ipfs node instance.
-      this.ipfs = this.ipfs || createClient("/ip4/127.0.0.1/tcp/5001");
+      this.ipfs =
+        this.ipfs ||
+        createClient("/ip4/127.0.0.1/tcp/5001", { protocol: "https" });
       this.$emit("ipfs", this.ipfs);
 
       try {

@@ -1,6 +1,6 @@
 <template>
   <table
-    v-if="Object.keys(objkts).length > 0"
+    v-if="objkts && Object.keys(objkts).length > 0"
     style="width: 1440px; margin: auto auto"
   >
     <thead>

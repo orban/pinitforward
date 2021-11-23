@@ -7,7 +7,7 @@ set -e
 npm run build
 
 # if you are deploying to a custom domain
-echo 'www.pinitforward.xyz' > docs/CNAME
+echo 'pinitforward.xyz' > docs/CNAME
 
 git add docs/
 git commit -m 'deploy'

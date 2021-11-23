@@ -42,7 +42,7 @@
       </tr>
     </tbody>
   </table>
-  <div class="section" v-else>
+  <div class="section" v-if-else="online">
     <h2>You are all set to start pinning 👍</h2>
     <hr style="margin: 3em 0" />
     <ol>

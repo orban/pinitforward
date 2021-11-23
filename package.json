@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "serve": "vue-cli-service serve --port 3000",
-    "build": "vue-cli-service build --dest docs --modern",
+    "build": "vue-cli-service build --dest docs",
     "start": "npm run serve",
     "lint": "vue-cli-service lint",
     "test": "npm run build && playwright test tests"

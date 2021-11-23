@@ -49,11 +49,64 @@
               style="width: 600px"
             ></progress>
           </div>
+          <div
+            class="section"
+            v-if="
+              online &&
+              !pinning &&
+              !downloading &&
+              Object.keys(objkts).length < 1
+            "
+          >
+            <h2>You are all set to start pinning 👍</h2>
+            <hr style="margin: 3em 0" />
+            <ol>
+              <li>
+                Enter any valid Tezos wallet address into the search bar above.
+                This fetches the NFT metadata from
+                <a href="https://data.objkt.com/docs/">data.objkt.com</a>.
+              </li>
+              <li>
+                The metadata fetching is pretty fast but depending on the size
+                of a collection, the actual
+                <a href="https://docs.ipfs.io/how-to/pin-files/">pinning</a>
+                could take some time to complete. The intermediate state is
+                preserved so if you refresh/close the tab it will pickup where
+                it left off.
+              </li>
+              <li>
+                Everything is local to your web browser, no data/info is sent to
+                any servers (except the initial query to
+                <a href="https://data.objkt.com/docs/">data.objkt.com</a>).
+              </li>
+              <li>
+                Occassionally there might be timeouts when pinning large/slow
+                files... you can restart the process by re-submitting the
+                search.
+              </li>
+              <li>
+                <p>
+                  You will continue to host the files for as long as your
+                  <span class="highlight">IPFS node</span> is online (you can
+                  close this tab once the pinning is complete).
+                </p>
+              </li>
+              <li>
+                Feel free to reach out to
+                <a href="https://twitter.com/psychothan">@psychothan</a> or
+                chime in on the
+                <a href="https://discord.gg/kA8vFDUkr5">Discord server</a> if
+                you have any ❓❓❓
+              </li>
+            </ol>
+          </div>
         </div>
-        <div v-if="objkts && Object.keys(objkts).length > 0">
+        <div>
           <objkt-table
             :objkts="objkts"
             :ipfs="ipfs"
+            :online="online"
+            :pinning="pinning"
             @unpin="updateObjkts"
           ></objkt-table>
         </div>

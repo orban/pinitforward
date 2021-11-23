@@ -1,8 +1,5 @@
 <template>
-  <table
-    v-if="objkts && Object.keys(objkts).length > 0"
-    style="width: 1440px; margin: auto auto"
-  >
+  <table style="width: 1440px; margin: auto auto">
     <thead>
       <tr>
         <th>Title</th>

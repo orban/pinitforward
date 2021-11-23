@@ -50,11 +50,13 @@
             ></progress>
           </div>
         </div>
-        <objkt-table
-          :objkts="objkts"
-          :ipfs="ipfs"
-          @unpin="updateObjkts"
-        ></objkt-table>
+        <div v-if="objkts && Object.keys(objkts).length > 0">
+          <objkt-table
+            :objkts="objkts"
+            :ipfs="ipfs"
+            @unpin="updateObjkts"
+          ></objkt-table>
+        </div>
       </div>
       <div
         style="

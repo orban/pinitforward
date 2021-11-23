@@ -2,7 +2,7 @@
 
 # modified from: https://github.com/ipfs/ipfs-webui/blob/main/cors-config.sh
 
-ALLOW_ORIGINS='"https://pinitforward.xyz", "http://localhost:3000", "https://webui.ipfs.io", "https://dev.webui.ipfs.io"'
+ALLOW_ORIGINS='"https://pinitforward.xyz", "https://www.pinitforward.xyz", "http://localhost:3000", "https://webui.ipfs.io", "https://dev.webui.ipfs.io"'
 
 # stop executing if anything fails
 set -e

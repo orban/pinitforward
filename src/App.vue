@@ -105,8 +105,6 @@
           <objkt-table
             :objkts="objkts"
             :ipfs="ipfs"
-            :online="online"
-            :pinning="pinning"
             @unpin="updateObjkts"
           ></objkt-table>
         </div>
@@ -287,6 +285,8 @@ import Search from "./components/Search.vue";
 import Ipfs from "./components/Ipfs.vue";
 import Objkts from "./components/Objkts.vue";
 
+import { metadataQuery, graphqlQuery } from "./helpers/queries";
+
 export default {
   name: "Pin it forward",
   components: {
@@ -350,6 +350,22 @@ export default {
       this.toPin = assets.length;
 
       for (let objkt of assets) {
+        if (objkt.metadata === "" && objkt?.fa2?.name === "hic et nunc") {
+          const res = await graphqlQuery(
+            "https://api.hicdex.com/v1/graphql",
+            metadataQuery,
+            { id: objkt.id },
+            "getMetadata"
+          );
+          if (res.errors) {
+            console.error(res.errors);
+          }
+
+          if (objkt.id === res.data.hic_et_nunc_token_by_pk.id.toString()) {
+            objkt.metadata = res.data.hic_et_nunc_token_by_pk.metadata;
+          }
+        }
+
         const cids = [];
         console.log(`Processing objkt ${objkt.id}`);
 

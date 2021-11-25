@@ -4,7 +4,7 @@
       <tr>
         <th>Objkt</th>
         <th>Title</th>
-        <th>Artist</th>
+        <th>Creator</th>
         <th>Medium</th>
         <th>Description</th>
         <th>Metadata</th>
@@ -41,7 +41,7 @@
         <td>{{ objkt?.description }}</td>
         <td>
           <a :href="objkt.metadata">{{
-            objkt.metadata.slice(7, 15) + "..."
+            objkt.metadata !== "" ? objkt.metadata.slice(7, 15) + "..." : ""
           }}</a>
         </td>
         <td style="text-align: center">

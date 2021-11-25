@@ -78,6 +78,27 @@ const fields = `
   }
 `;
 
+const metadataQuery = `
+  query getMetadata($id: bigint!) {
+    hic_et_nunc_token_by_pk(id: $id) {
+      artifact_uri
+      creator {
+        address
+        name
+      }
+      id
+      level
+      mime
+      royalties
+      supply
+      metadata
+      timestamp
+      title
+      extra
+    }
+  }
+`;
+
 const accountQuery = `
 query getCollection($address: String!, $offset: Int!) {
   token(offset: $offset, order_by: {pk_id: asc}, where: {_or: [{creator: {address: {_eq: $address}}}, {token_holders: {holder: {address: {_eq: $address}}}}]}) 
@@ -92,8 +113,8 @@ query getObjkt($address: String!, $offset: Int!) {
 }
 `;
 
-async function graphqlQuery(query, variables, operationName) {
-  const result = await fetch("https://data.objkt.com/v1/graphql", {
+async function graphqlQuery(url, query, variables, operationName) {
+  const result = await fetch(url, {
     method: "POST",
     body: JSON.stringify({
       query: query,
@@ -105,4 +126,4 @@ async function graphqlQuery(query, variables, operationName) {
   return await result.json();
 }
 
-export { accountQuery, objktQuery, graphqlQuery };
+export { accountQuery, objktQuery, metadataQuery, graphqlQuery };

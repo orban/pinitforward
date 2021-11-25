@@ -118,6 +118,7 @@ export default {
       let res;
       do {
         res = await graphqlQuery(
+          "https://data.objkt.com/v1/graphql",
           query,
           { address: address, offset: offset },
           operation

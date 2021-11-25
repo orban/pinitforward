@@ -2,6 +2,7 @@
   <table v-if="curPage.length > 0" style="width: 1440px; margin: auto auto">
     <thead>
       <tr>
+        <th>Objkt</th>
         <th>Title</th>
         <th>Artist</th>
         <th>Medium</th>
@@ -12,6 +13,16 @@
     </thead>
     <tbody>
       <tr v-for="objkt in curPage" :key="objkt?.pk_id?.toString()">
+        <td>
+          <a v-if="objktLink(objkt)" :href="objktLink(objkt)">{{
+            objkt.id.length > 5
+              ? objkt.id.substring(0, 3) + "..." + objkt.id.slice(-3)
+              : objkt.id
+          }}</a>
+          <span v-else>{{
+            objkt.id.substring(0, 3) + "..." + objkt.id.slice(-3)
+          }}</span>
+        </td>
         <td style="font-style: italic">
           <a
             :href="`https://dweb.link/ipfs/${
@@ -21,8 +32,8 @@
           >
         </td>
         <td>
-          <a v-if="objktLink(objkt)" :href="objktLink(objkt)">{{
-            objktAlias(objkt)
+          <a v-if="creatorLink(objkt)" :href="creatorLink(objkt)">{{
+            creatorAlias(objkt)
           }}</a>
           <span v-else>{{ objktAlias(objkt) }}</span>
         </td>
@@ -160,7 +171,7 @@ export default {
     goToPage(num) {
       this.page = num;
     },
-    objktLink(objkt) {
+    creatorLink(objkt) {
       if (objkt?.creator?.twitter) {
         return `https://twitter.com/${objkt.creator.twitter}`;
       } else if (objkt?.creator?.site) {
@@ -171,7 +182,7 @@ export default {
         return undefined;
       }
     },
-    objktAlias(objkt) {
+    creatorAlias(objkt) {
       if (!objkt.creator) {
         return objkt.fa2?.name;
       }
@@ -181,6 +192,15 @@ export default {
       } else {
         const addr = objkt.creator.address;
         return addr.substring(0, 5) + "..." + addr.substring(addr.length - 5);
+      }
+    },
+    objktLink(objkt) {
+      if (objkt?.fa2?.name === "hic et nunc") {
+        return `https://hicetnunc.art/objkt/${objkt.id}`;
+      } else if (objkt?.fa2?.path) {
+        return `https://objkt.com/asset/${objkt.fa2.path}/${objkt.id}`;
+      } else {
+        return undefined;
       }
     },
     async unpin(id) {

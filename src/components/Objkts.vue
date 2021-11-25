@@ -15,7 +15,7 @@
       <tr v-for="objkt in curPage" :key="objkt?.pk_id?.toString()">
         <td>
           <a v-if="objktLink(objkt)" :href="objktLink(objkt)">{{
-            objkt.id.length > 5
+            objkt.id.length > 6
               ? objkt.id.substring(0, 3) + "..." + objkt.id.slice(-3)
               : objkt.id
           }}</a>

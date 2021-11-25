@@ -96,7 +96,7 @@
                 <a href="https://twitter.com/psychothan">@psychothan</a> or
                 chime in on the
                 <a href="https://discord.gg/kA8vFDUkr5">Discord server</a> if
-                you have any ❓❓❓
+                you have any questions, suggestions, or requests!
               </li>
             </ol>
           </div>

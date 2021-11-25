@@ -12,9 +12,29 @@ const fields = `
     description
     display_uri
     fa2 {
-      name
-      contract
-    }
+        active_listing
+        category
+        collection_id
+        collection_type
+        contract
+        items
+        metadata
+        name
+        path
+        short_name
+        type
+        website
+        active_auctions
+        floor_price
+        level
+        live
+        logo
+        timestamp
+        token_link
+        twitter
+        volume_24h
+        volume_total
+      }
     id
     mime
     metadata
@@ -22,6 +42,39 @@ const fields = `
     thumbnail_uri
     timestamp
     title
+    creator_id
+    extra
+    flag
+    fa2_id
+    highest_bid
+    is_signed
+    last_listed
+    last_metadata_update
+    level
+    lowest_ask
+    royalties
+    supply
+    thresh
+    token_attributes {
+      attribute_id
+      id
+      attribute {
+        id
+        name
+        type
+        value
+      }
+      token_id
+    }
+    token_tags {
+      id
+      tag_id
+      tag {
+        id
+        name
+      }
+      token_id
+    }
   }
 `;
 
